@@ -1,0 +1,24 @@
+<div id="account" layout:decorate="~{layout/fullPageLayout}" layout:fragment="content">
+	<div id="registerStudent">
+    <blc:form id="registrationFormStudent" action="#" th:object="${assessmentData}" th:action="@{/assessment}" method="post" class="clearfix">
+    <span th:if="*{endOfAssessment}">End of assessment. Your score is:</span>
+    <span th:if="*{endOfAssessment}" th:utext="*{score}"></span>
+    <label>	
+    	<span th:if="*{!endOfAssessment}" th:utext="*{question.name}">
+    	</span>
+    	<div th:if="*{!endOfAssessment}" th:each="answer : *{question.answers}">
+			<label> 
+			  <input type="radio" name="answer" th:value="${answer.name}" th:field="*{answers}"/>
+			  <span th:utext="${answer.displayName}">
+			</span>
+			</label>
+		</div>
+		<div class="form30">
+			<input  type="hidden" name="questionnaireId" th:value="${param.questionnaireId}"/>
+            <input class="login_button big red" type="submit" th:value="submit"/>
+        </div>
+    	</label>
+    	
+    </blc:form>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div id="account" layout:decorate="~{layout/fullPageLayout}" layout:fragment="content">
+	<div id="registerStudent" style="width:90% !important">
+    <blc:form id="registrationFormStudent" action="#" th:object="${programData}" th:action="@{/register}" method="post" class="clearfix">
+	 <div th:each="course : *{program.courses}" style="clear:both;" class="courses">
+		<section>
+			<h2 th:utext="${course.name}"></h2>
+			<div class="cdescription" th:utext="${course.description}">
+				&nbsp;<span><a href="" target="_blank"> >>>> </a> </span>
+			</div>
+			<div class="cassignment">
+			<a th:href="@{/assessment?questionnaireId=} + ${course.questionnaire.id}" class="bassignment">take assessment</a>
+			</div>
+		</section>
+		</div>
+    </blc:form>
+    </div>
+</div>
